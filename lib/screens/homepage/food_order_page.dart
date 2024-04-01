@@ -14,7 +14,7 @@ class _FoodOrderPageState extends State<FoodOrderPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("data"),
+        title: const Text("data"),
       ),
       body: Column(
         children: [

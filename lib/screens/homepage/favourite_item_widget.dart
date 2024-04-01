@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/screens/homepage/favourite_model.dart';
-import 'package:food_app/screens/homepage/food_order_page.dart';
 
 class FavouriteItemmWidget extends StatelessWidget {
   const FavouriteItemmWidget({super.key, required this.favModel});
@@ -11,10 +10,14 @@ class FavouriteItemmWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.of(context).pushNamed("/food_order_page", arguments: {
-          'image': favModel.image,
-          'title': favModel.title,
-        });
+        Navigator.pushNamed(
+          context,
+          "/foodOrderPage",
+          arguments: {
+            'image': favModel.image,
+            'title': favModel.title,
+          },
+        );
       },
       child: Container(
         color: const Color.fromRGBO(204, 204, 204, 10),
