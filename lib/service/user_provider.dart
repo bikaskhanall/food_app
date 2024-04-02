@@ -1,8 +1,9 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 
 class BookmarkProvider extends ChangeNotifier {
   bool isLiked = false;
-  // List <Map> = [];
 
   void updateBookmark() {
     isLiked = !isLiked;
@@ -10,7 +11,6 @@ class BookmarkProvider extends ChangeNotifier {
   }
 }
 
-class CartProvider extends ChangeNotifier {
-  // final List<Items> _cartItems = [];
-  // UnmodifiableListView get cartItems => _cartItems;
-}
+class NumberlistProvider extends ChangeNotifier {}
+
+class CartProvider extends ChangeNotifier {}

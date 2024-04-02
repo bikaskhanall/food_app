@@ -13,21 +13,30 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   List<FavModel> favList = [
     FavModel(
-      image: "assets/images/normal.jpeg",
-      title: "Chicken Burger",
-    ),
+        image: "assets/images/normal.jpeg",
+        title: "Chicken Burger",
+        price: 12.99,
+        description:
+            "Crispy seasoned chicken breast topped with ,mandatory melted cheese, piled onto soft rolls with onion, avocado, lettuce, tomato and garlic mayo."),
     FavModel(
       image: "assets/images/premiumburger.jpeg",
       title: "Buff Burger",
+      price: 13.99,
+      description:
+          "The recipe is simple & is based on the purity & amazing taste of the ingredients & especially our “Pulled Buffalo” with slow-cooked water buffalo meat from “Kerkini Farm”",
     ),
     FavModel(
-      image: "assets/images/coke.jpeg",
-      title: "Juice",
-    ),
+        image: "assets/images/coke.jpeg",
+        title: "Coke",
+        price: 5,
+        description:
+            "Coca-Cola, or Coke, is a carbonated soft drink with a cola flavor manufactured by the Coca-Cola Company. In 2013, Coke products were sold in over 200 countries worldwide, with consumers drinking more than 1.8 billion company beverage servings each day."),
     FavModel(
-      image: "assets/images/wraps.jpeg",
-      title: "Wrap",
-    ),
+        image: "assets/images/wraps.jpeg",
+        title: "Wrap",
+        price: 9.99,
+        description:
+            "A wrap is a culinary dish made with a soft flatbread rolled around a filling."),
   ];
   bool isLiked = false;
   @override

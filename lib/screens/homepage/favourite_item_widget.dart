@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/screens/homepage/favourite_model.dart';
+import 'package:food_app/service/user_provider.dart';
+import 'package:provider/provider.dart';
 
 class FavouriteItemmWidget extends StatelessWidget {
   const FavouriteItemmWidget({super.key, required this.favModel});
@@ -16,6 +18,8 @@ class FavouriteItemmWidget extends StatelessWidget {
           arguments: {
             'image': favModel.image,
             'title': favModel.title,
+            'price': favModel.price,
+            'description': favModel.description,
           },
         );
       },
@@ -47,9 +51,22 @@ class FavouriteItemmWidget extends StatelessWidget {
                       backgroundColor: Colors.blue,
                       side: BorderSide.none,
                     ),
-                    const SizedBox(
-                      width: 30,
-                    ),
+                    Consumer<BookmarkProvider>(
+                        builder: (context, bookmarkprovider, child) {
+                      return GestureDetector(
+                        child: Icon(bookmarkprovider.isLiked
+                            ? Icons.heart_broken
+                            : Icons.heart_broken_outlined),
+                        onTap: () {
+                          bookmarkprovider.updateBookmark();
+
+                          // isLiked = !isLiked;
+
+                          // setState(() {});
+                          // print(isLiked);
+                        },
+                      );
+                    }),
                     GestureDetector(
                       onTap: () {},
                       child: Chip(

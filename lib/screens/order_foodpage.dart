@@ -21,24 +21,7 @@ class _AddPageState extends State<AddPage> {
         ),
       ),
       body: Column(
-        children: [
-          Consumer<BookmarkProvider>(
-              builder: (context, bookmarkprovider, child) {
-            return GestureDetector(
-              child: Icon(bookmarkprovider.isLiked
-                  ? Icons.heart_broken
-                  : Icons.heart_broken_outlined),
-              onTap: () {
-                bookmarkprovider.updateBookmark();
-
-                // isLiked = !isLiked;
-
-                // setState(() {});
-                // print(isLiked);
-              },
-            );
-          }),
-        ],
+        children: [],
       ),
     );
   }
