@@ -18,11 +18,9 @@ class _SplashState extends State<Splash> {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => NumberlistProvider()),
-        ChangeNotifierProvider<CartProvider>(
-          create: (context) => CartProvider(),
+        ChangeNotifierProvider<Cart>(
+          create: (context) => Cart(),
         ),
-        ChangeNotifierProvider(create: (context) => NumberlistProvider()),
         ChangeNotifierProvider<BookmarkProvider>(
           create: (context) => BookmarkProvider(),
         )

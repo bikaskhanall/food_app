@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:food_app/my_cartpage.dart';
 import 'package:food_app/screens/homepage/favourite_item_widget.dart';
 import 'package:food_app/screens/homepage/favourite_model.dart';
+import 'package:food_app/screens/news_screen_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -13,12 +14,14 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   List<FavModel> favList = [
     FavModel(
+        id: 1,
         image: "assets/images/normal.jpeg",
         title: "Chicken Burger",
         price: 12.99,
         description:
             "Crispy seasoned chicken breast topped with ,mandatory melted cheese, piled onto soft rolls with onion, avocado, lettuce, tomato and garlic mayo."),
     FavModel(
+      id: 2,
       image: "assets/images/premiumburger.jpeg",
       title: "Buff Burger",
       price: 13.99,
@@ -26,12 +29,14 @@ class _HomePageState extends State<HomePage> {
           "The recipe is simple & is based on the purity & amazing taste of the ingredients & especially our “Pulled Buffalo” with slow-cooked water buffalo meat from “Kerkini Farm”",
     ),
     FavModel(
+        id: 3,
         image: "assets/images/coke.jpeg",
         title: "Coke",
         price: 5,
         description:
             "Coca-Cola, or Coke, is a carbonated soft drink with a cola flavor manufactured by the Coca-Cola Company. In 2013, Coke products were sold in over 200 countries worldwide, with consumers drinking more than 1.8 billion company beverage servings each day."),
     FavModel(
+        id: 4,
         image: "assets/images/wraps.jpeg",
         title: "Wrap",
         price: 9.99,
@@ -73,6 +78,22 @@ class _HomePageState extends State<HomePage> {
                 title: const Text('Order'),
                 onTap: () {
                   Navigator.pop(context);
+                },
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 8.0),
+              child: ListTile(
+                leading: const Icon(
+                  Icons.man,
+                ),
+                title: const Text('Api News Model'),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => NewsScreenPage(),
+                      ));
                 },
               ),
             ),

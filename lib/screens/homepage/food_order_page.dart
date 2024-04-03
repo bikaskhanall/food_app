@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_app/service/user_provider.dart';
+import 'package:food_app/screens/homepage/favourite_model.dart';
 import 'package:provider/provider.dart';
 
 class FoodOrderPage extends StatefulWidget {
@@ -49,22 +49,6 @@ class _FoodOrderPageState extends State<FoodOrderPage> {
                     fontSize: 18,
                   ),
                 )),
-                Consumer<BookmarkProvider>(
-                    builder: (context, bookmarkprovider, child) {
-                  return GestureDetector(
-                    child: Icon(bookmarkprovider.isLiked
-                        ? Icons.heart_broken
-                        : Icons.heart_broken_outlined),
-                    onTap: () {
-                      bookmarkprovider.updateBookmark();
-
-                      // isLiked = !isLiked;
-
-                      // setState(() {});
-                      // print(isLiked);
-                    },
-                  );
-                }),
               ],
             ),
           ),

@@ -54,11 +54,12 @@ class FavouriteItemmWidget extends StatelessWidget {
                     Consumer<BookmarkProvider>(
                         builder: (context, bookmarkprovider, child) {
                       return GestureDetector(
-                        child: Icon(bookmarkprovider.isLiked
+                        child: Icon(bookmarkprovider.isItemLiked(favModel)
                             ? Icons.heart_broken
                             : Icons.heart_broken_outlined),
                         onTap: () {
-                          bookmarkprovider.updateBookmark();
+                          bookmarkprovider.likeFoodItem(favModel);
+                          // bookmarkprovider.updateBookmark();
 
                           // isLiked = !isLiked;
 
