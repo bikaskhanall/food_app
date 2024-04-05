@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:food_app/screens/models/news_model.dart';
+import 'package:food_app/models/news_model.dart';
 import 'package:http/http.dart' as http;
 
 class Api {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:food_app/screens/homepage/favourite_model.dart';
+import 'package:food_app/models/favourite_model.dart';
+import 'package:food_app/viewmodel/cart_provider.dart';
 import 'package:provider/provider.dart';
 
 class FoodOrderPage extends StatefulWidget {
@@ -54,7 +55,18 @@ class _FoodOrderPageState extends State<FoodOrderPage> {
           ),
           TextButton(
             onPressed: () {
-// Text("data"),
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                content: const Text("Added To Cart"),
+                action: SnackBarAction(label: "Undo", onPressed: () {}),
+              ));
+              FavModel data = FavModel(
+                  id: arguments['id'],
+                  title: arguments["title"].toString(),
+                  image: arguments["image"].toString(),
+                  price: arguments['price'],
+                  description: arguments["description"]);
+              Provider.of<ItemCartProvider>(context, listen: false)
+                  .addToCart(data);
             },
             child: const Text("Add To Cart"),
           )

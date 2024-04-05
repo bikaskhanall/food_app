@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:food_app/screens/homepage/favourite_model.dart';
-import 'package:food_app/service/user_provider.dart';
+import 'package:food_app/models/favourite_model.dart';
+import 'package:food_app/viewmodel/home_provider.dart';
 import 'package:provider/provider.dart';
 
 class FavouriteItemmWidget extends StatelessWidget {
@@ -51,7 +51,7 @@ class FavouriteItemmWidget extends StatelessWidget {
                       backgroundColor: Colors.blue,
                       side: BorderSide.none,
                     ),
-                    Consumer<BookmarkProvider>(
+                    Consumer<HomeProvider>(
                         builder: (context, bookmarkprovider, child) {
                       return GestureDetector(
                         child: Icon(bookmarkprovider.isItemLiked(favModel)
@@ -68,6 +68,9 @@ class FavouriteItemmWidget extends StatelessWidget {
                         },
                       );
                     }),
+                    SizedBox(
+                      width: 5,
+                    ),
                     GestureDetector(
                       onTap: () {},
                       child: Chip(

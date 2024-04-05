@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:food_app/screens/api/api.dart';
-import 'package:food_app/screens/models/news_model.dart';
+import 'package:food_app/api/api.dart';
+import 'package:food_app/models/news_model.dart';
 
 class NewsScreenPage extends StatefulWidget {
   const NewsScreenPage({super.key});

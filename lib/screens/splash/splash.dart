@@ -1,10 +1,11 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:food_app/screens/homepage/food_order_page.dart';
-import 'package:food_app/screens/landing_page.dart';
+import 'package:food_app/screens/food/food_order_page.dart';
+import 'package:food_app/screens/landing_page/landing_page.dart';
+import 'package:food_app/viewmodel/cart_provider.dart';
 import 'package:provider/provider.dart';
 
-import '../service/user_provider.dart';
+import '../../viewmodel/home_provider.dart';
 
 class Splash extends StatefulWidget {
   const Splash({super.key});
@@ -18,11 +19,11 @@ class _SplashState extends State<Splash> {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider<Cart>(
-          create: (context) => Cart(),
+        ChangeNotifierProvider<ItemCartProvider>(
+          create: (context) => ItemCartProvider(),
         ),
-        ChangeNotifierProvider<BookmarkProvider>(
-          create: (context) => BookmarkProvider(),
+        ChangeNotifierProvider<HomeProvider>(
+          create: (context) => HomeProvider(),
         )
       ],
       child: MaterialApp(

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:food_app/my_cartpage.dart';
+import 'package:food_app/screens/cart/my_cartpage.dart';
 import 'package:food_app/screens/homepage/favourite_item_widget.dart';
-import 'package:food_app/screens/homepage/favourite_model.dart';
-import 'package:food_app/screens/news_screen_page.dart';
+import 'package:food_app/screens/news/news_screen_page.dart';
+import 'package:food_app/viewmodel/home_provider.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -12,38 +13,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<FavModel> favList = [
-    FavModel(
-        id: 1,
-        image: "assets/images/normal.jpeg",
-        title: "Chicken Burger",
-        price: 12.99,
-        description:
-            "Crispy seasoned chicken breast topped with ,mandatory melted cheese, piled onto soft rolls with onion, avocado, lettuce, tomato and garlic mayo."),
-    FavModel(
-      id: 2,
-      image: "assets/images/premiumburger.jpeg",
-      title: "Buff Burger",
-      price: 13.99,
-      description:
-          "The recipe is simple & is based on the purity & amazing taste of the ingredients & especially our “Pulled Buffalo” with slow-cooked water buffalo meat from “Kerkini Farm”",
-    ),
-    FavModel(
-        id: 3,
-        image: "assets/images/coke.jpeg",
-        title: "Coke",
-        price: 5,
-        description:
-            "Coca-Cola, or Coke, is a carbonated soft drink with a cola flavor manufactured by the Coca-Cola Company. In 2013, Coke products were sold in over 200 countries worldwide, with consumers drinking more than 1.8 billion company beverage servings each day."),
-    FavModel(
-        id: 4,
-        image: "assets/images/wraps.jpeg",
-        title: "Wrap",
-        price: 9.99,
-        description:
-            "A wrap is a culinary dish made with a soft flatbread rolled around a filling."),
-  ];
-  bool isLiked = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -138,25 +107,6 @@ class _HomePageState extends State<HomePage> {
               ),
             ],
           ),
-
-          // Consumer<BookmarkProvider>(
-          //     builder: (context, bookmarkprovider, child) {
-          //   return GestureDetector(
-          //     child: Icon(bookmarkprovider.isLiked
-          //         ? Icons.heart_broken
-          //         : Icons.heart_broken_outlined),
-          //     onTap: () {
-          //       bookmarkprovider.updateBookmark();
-          //     },
-          //   );
-          // }),
-          // ElevatedButton(
-          //   onPressed: () {
-          //     Navigator.push(context,
-          //         MaterialPageRoute(builder: (context) => const AddPage()));
-          //   },
-          //   child: const Text("Next Page"),
-          // ),
           const Padding(
             padding: EdgeInsets.only(left: 20, right: 20, top: 10),
             child: SearchBar(
@@ -209,26 +159,24 @@ class _HomePageState extends State<HomePage> {
               ),
             ],
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 5.0, top: 10),
-            child: Column(
-              children: [
-                ListView.separated(
-                  itemBuilder: ((context, index) {
-                    return FavouriteItemmWidget(
-                      favModel: favList[index],
-                    );
-                  }),
-                  separatorBuilder: ((context, index) => const SizedBox(
-                        height: 10,
-                      )),
-                  itemCount: favList.length,
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                ),
-              ],
-            ),
-          )
+          Consumer<HomeProvider>(builder: (context, homeProvider, child) {
+            return Padding(
+              padding: const EdgeInsets.only(left: 5.0, top: 10),
+              child: ListView.separated(
+                itemBuilder: ((context, index) {
+                  return FavouriteItemmWidget(
+                    favModel: homeProvider.favList[index],
+                  );
+                }),
+                separatorBuilder: ((context, index) => const SizedBox(
+                      height: 10,
+                    )),
+                itemCount: homeProvider.favList.length,
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+              ),
+            );
+          })
         ]),
       ),
     );
