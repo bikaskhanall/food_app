@@ -7,14 +7,14 @@ class HomeProvider extends ChangeNotifier {
         id: 1,
         image: "assets/images/normal.jpeg",
         title: "Chicken Burger",
-        price: 12.99,
+        price: 10,
         description:
             "Crispy seasoned chicken breast topped with ,mandatory melted cheese, piled onto soft rolls with onion, avocado, lettuce, tomato and garlic mayo."),
     FavModel(
       id: 2,
       image: "assets/images/premiumburger.jpeg",
       title: "Buff Burger",
-      price: 13.99,
+      price: 12,
       description:
           "The recipe is simple & is based on the purity & amazing taste of the ingredients & especially our “Pulled Buffalo” with slow-cooked water buffalo meat from “Kerkini Farm”",
     ),
@@ -22,14 +22,14 @@ class HomeProvider extends ChangeNotifier {
         id: 3,
         image: "assets/images/coke.jpeg",
         title: "Coke",
-        price: 5,
+        price: 7,
         description:
             "Coca-Cola, or Coke, is a carbonated soft drink with a cola flavor manufactured by the Coca-Cola Company. In 2013, Coke products were sold in over 200 countries worldwide, with consumers drinking more than 1.8 billion company beverage servings each day."),
     FavModel(
         id: 4,
         image: "assets/images/wraps.jpeg",
         title: "Wrap",
-        price: 9.99,
+        price: 5,
         description:
             "A wrap is a culinary dish made with a soft flatbread rolled around a filling."),
   ];

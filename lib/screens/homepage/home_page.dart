@@ -1,12 +1,15 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:food_app/models/favourite_model.dart';
 import 'package:food_app/screens/cart/my_cartpage.dart';
-import 'package:food_app/screens/homepage/favourite_item_widget.dart';
 import 'package:food_app/screens/news/news_screen_page.dart';
 import 'package:food_app/viewmodel/home_provider.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  const HomePage({
+    super.key,
+  });
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -61,7 +64,7 @@ class _HomePageState extends State<HomePage> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => NewsScreenPage(),
+                        builder: (context) => const NewsScreenPage(),
                       ));
                 },
               ),
@@ -159,24 +162,89 @@ class _HomePageState extends State<HomePage> {
               ),
             ],
           ),
-          Consumer<HomeProvider>(builder: (context, homeProvider, child) {
-            return Padding(
-              padding: const EdgeInsets.only(left: 5.0, top: 10),
-              child: ListView.separated(
-                itemBuilder: ((context, index) {
-                  return FavouriteItemmWidget(
-                    favModel: homeProvider.favList[index],
-                  );
-                }),
-                separatorBuilder: ((context, index) => const SizedBox(
-                      height: 10,
-                    )),
-                itemCount: homeProvider.favList.length,
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-              ),
-            );
-          })
+          GestureDetector(
+            onTap: () {},
+            child:
+                Consumer<HomeProvider>(builder: (context, homeProvider, child) {
+              return Padding(
+                padding: const EdgeInsets.all(24.0),
+                child: GridView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            crossAxisSpacing: 12.0,
+                            mainAxisSpacing: 12,
+                            mainAxisExtent: 300),
+                    itemCount: homeProvider.favList.length,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        height: 250,
+                        decoration: BoxDecoration(
+                          color: Colors.grey,
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        child: Column(
+                          children: [
+                            ClipRRect(
+                              borderRadius: const BorderRadius.only(
+                                  topLeft: Radius.circular(16),
+                                  topRight: Radius.circular(16.4)),
+                              child: Image.asset(
+                                "${gridMap.elementAt(index)['image']}",
+                                height: 170,
+                                width: double.infinity,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                children: [
+                                  Text(
+                                    "${gridMap.elementAt(index)['title']}",
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .titleMedium!
+                                        .merge(const TextStyle(
+                                            fontWeight: FontWeight.w800)),
+                                  ),
+                                  const SizedBox(
+                                    height: 8.4,
+                                  ),
+                                  Text(
+                                    "${gridMap.elementAt(index)['price']}",
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .titleSmall!
+                                        .merge(const TextStyle(
+                                            fontWeight: FontWeight.w700,
+                                            color: Colors.black)),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            Row(
+                              children: [
+                                IconButton(
+                                    onPressed: () {},
+                                    icon: Icon(CupertinoIcons.heart)),
+                                IconButton(
+                                    onPressed: () {},
+                                    icon: Icon(CupertinoIcons.cart)),
+                              ],
+                            )
+                          ],
+                        ),
+                      );
+                    }),
+              );
+            }),
+          )
         ]),
       ),
     );

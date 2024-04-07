@@ -50,10 +50,8 @@ class _SignInState extends State<SignIn> {
                   width: 300,
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const HomePage()));
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => HomePage()));
                     },
                     style: ButtonStyle(
                         backgroundColor:
@@ -154,7 +152,7 @@ class _SignInState extends State<SignIn> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const HomePage(),
+                          builder: (context) => HomePage(),
                         ));
                   });
                 }
