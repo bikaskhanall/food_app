@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:food_app/my_cartpage.dart';
+import 'package:food_app/screens/cart/my_cartpage.dart';
 import 'package:food_app/screens/homepage/favourite_item_widget.dart';
-import 'package:food_app/screens/homepage/favourite_model.dart';
+import 'package:food_app/models/favourite_model.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -11,24 +11,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<FavModel> favList = [
-    FavModel(
-      image: "assets/images/normal.jpeg",
-      title: "Chicken Burger",
-    ),
-    FavModel(
-      image: "assets/images/premiumburger.jpeg",
-      title: "Buff Burger",
-    ),
-    FavModel(
-      image: "assets/images/coke.jpeg",
-      title: "Juice",
-    ),
-    FavModel(
-      image: "assets/images/wraps.jpeg",
-      title: "Wrap",
-    ),
-  ];
   bool isLiked = false;
   @override
   Widget build(BuildContext context) {

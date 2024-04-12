@@ -1,5 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:food_app/screens/homepage/favourite_model.dart';
+import 'package:food_app/models/favourite_model.dart';
+import 'package:food_app/viewmodel/home_provider.dart';
+import 'package:provider/provider.dart';
 
 class FavouriteItemmWidget extends StatelessWidget {
   const FavouriteItemmWidget({super.key, required this.favModel});
@@ -16,6 +19,8 @@ class FavouriteItemmWidget extends StatelessWidget {
           arguments: {
             'image': favModel.image,
             'title': favModel.title,
+            'price': favModel.price,
+            'description': favModel.description,
           },
         );
       },
@@ -29,7 +34,7 @@ class FavouriteItemmWidget extends StatelessWidget {
               height: 100,
               width: 110,
               child: Image.asset(
-                favModel.image ?? "assets/image/panda.jpg",
+                favModel.image ?? "N/A",
                 fit: BoxFit.fill,
               ),
             ),
@@ -37,7 +42,7 @@ class FavouriteItemmWidget extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(favModel.title ?? "data"),
+                Text(favModel.title ?? "N/A"),
                 Row(
                   children: [
                     Chip(
@@ -48,7 +53,21 @@ class FavouriteItemmWidget extends StatelessWidget {
                       side: BorderSide.none,
                     ),
                     const SizedBox(
-                      width: 30,
+                      width: 5,
+                    ),
+                    Consumer<HomeProvider>(
+                        builder: (context, bookmarkprovider, child) {
+                      return GestureDetector(
+                        child: Icon(bookmarkprovider.isItemLiked(favModel)
+                            ? CupertinoIcons.heart_fill
+                            : CupertinoIcons.heart),
+                        onTap: () {
+                          bookmarkprovider.likeFoodItem(favModel);
+                        },
+                      );
+                    }),
+                    const SizedBox(
+                      width: 3,
                     ),
                     GestureDetector(
                       onTap: () {},
